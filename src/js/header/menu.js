@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import './style.scss'
 
 const Menus = ({ menu }) => {
-    console.log(menu);
+
     const [btnShow, setBtnShow] = useState(null); // 按钮
-    // const imageFiles = require.context('./img', false, /\.png$/) // 获取菜单图标集合
+    const imageFiles = require.context('./img', false, /\.png$/) // 获取菜单图标集合
     useEffect(() => {
         const { pathname } = window.location
         const pathParams = pathname.split('$')
@@ -14,12 +14,12 @@ const Menus = ({ menu }) => {
     // 扫描图片文件获取图片对象
     const imageContext = (key) => {
         let baseImg = ''
-        // imageFiles.keys().forEach((v) => {
-        // 	const img = v.replace('./', '').replace('.png', '')
-        // 	if (img === key) {
-        // 		// baseImg = imageFiles(v).default
-        // 	}
-        // })
+        imageFiles.keys().forEach((v) => {
+        	const img = v.replace('./', '').replace('.png', '')
+        	if (img === key) {
+        		baseImg = imageFiles(v).default
+        	}
+        })
         return baseImg
     }
     // 动态改变菜单样式

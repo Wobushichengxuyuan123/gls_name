@@ -1,6 +1,5 @@
 import React from 'react'
 import { Icon, Menu, Dropdown } from 'antd'
-import powerStation from './img/powerStation.svg'
 import './style.scss'
 
 class MenuTop extends React.Component {
@@ -19,16 +18,17 @@ class MenuTop extends React.Component {
         }
         return null
     }
-    componentDidMount() {}
+    componentDidMount() { }
     chooseMenu(data) {
-        console.log(data);
+        // console.log(data);
         // for (var i = 0; i < document.getElementById('parentID').childNodes.length; i++) {
         //     document.getElementById('parentID').childNodes[i].style.background = '#009789'
         //     document.getElementById('parentID').childNodes[i].style.color = '#fff'
         // }
         // document.getElementById(data.url).style.background = '#387b73'
         // document.getElementById(data.id).style.color = '#2caba2'
-        this.props.change(data.children)
+        console.log(this);
+        this.props.change.menuChange(data.children)
     }
     clickCancelHander() {
         const { protocol, host } = window.location
@@ -42,7 +42,8 @@ class MenuTop extends React.Component {
             imageFiles.keys().forEach((v) => {
                 const img = v.replace('./', '').replace('.svg', '')
                 if (img === key) {
-                    // baseImg = imageFiles(v).default
+                    console.log(img, key, 1);
+                    baseImg = imageFiles(v).default
                 }
             })
             return baseImg
@@ -58,14 +59,13 @@ class MenuTop extends React.Component {
                 >
                     <div className="li_boxs">
                         <div className="li_box">
-                            <img src={backImg} alt={item.functionName} />
-                            {/* {item ? item.functionName : null} */}
+                            <img src={backImg} />
+                            {item ? item.functionName : null}
                         </div>
                     </div>
                 </li>
             )
         })
-
         const menu = (
             <Menu>
                 <Menu.Item key="userRightMenu">
@@ -76,16 +76,13 @@ class MenuTop extends React.Component {
         )
         return (
             <div className='menuTop'>
-                <div className="dateBox">
-                    {/* <img src={powerStation} alt="标题" /> */}
-                    管控中心
-                </div>
+                <div className="dateBox">管控中心 </div>
                 <ul id="parentID">{list}</ul>
                 <div className="user_info">
                     <Dropdown overlay={menu} trigger={['click']}>
                         <span style={{ cursor: 'pointer' }}>
                             <Icon type="user" />
-                            {this.props.userName }
+                            {this.props.userName}
                             <Icon type="down" />
                         </span>
                     </Dropdown>
