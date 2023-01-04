@@ -9,9 +9,10 @@ class App extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    this.init()
+    setTimeout(() => {
+      this.init()
+    }, 1500);
   }
-
   init() {
     const viewer = new Cesium.Viewer("cesiumContainer", {
       animation: false, //是否创建动画小器件，左下角仪表
@@ -29,31 +30,46 @@ class App extends React.Component {
       // showRenderLoopErrors: false, //是否显示渲染错误
       // orderIndependentTranslucency: false,    //设置背景透明
       // fullscreenButton: false, //是否显示全屏按钮
-      imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
-        // url: 'http://192.168.1.86:8989/Bejingmap/',
-        // enablePickFeatures: false,
+      imageryProvider: new Cesium.SingleTileImageryProvider({
+        url: `/World.jpg`,
       }),
+      // imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+      //   url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
+      //   // url: 'http://192.168.1.86:8989/Bejingmap/',
+      //   // enablePickFeatures: false,
+      // }),
     });
+    // 去掉版权
     viewer._cesiumWidget._creditContainer.style.display = "none";
     viewer.camera.setView({
+      // Cesium的坐标是以地心为原点，一向指向南美洲，一向指向亚洲，一向指向北极州
       // fromDegrees()方法，将经纬度和高程转换为世界坐标
-      destination: Cesium.Cartesian3.fromDegrees(106.26667, 39.46667, 2000000.0),
+      destination: Cesium.Cartesian3.fromDegrees(105.435314, 35.0, 15000000.0),
       orientation: {
-        heading: 0,
+        heading: 90,
         // 视角
-        pitch: -0.5686521559334161,
+        pitch: -0.1686521559334161,
         roll: 0.0,
-      }
+      },
     });
-    // viewer.dataSources.add(
-    //   (Cesium.GeoJsonDataSource.load("/public/china.json", {
-    //     stroke: Cesium.Color.BLUE,
-    //     fill: Cesium.Color.fromAlpha(Cesium.Color.RED, 0.4),
-    //     strokeWidth: 3,
-    //     markerSymbol: "?",
-    //   }))
-    // );
+    // viewer.camera.setView({
+    //   // fromDegrees()方法，将经纬度和高程转换为世界坐标
+    //   destination: Cesium.Cartesian3.fromDegrees(106.26667, 39.46667, 2000000.0),
+    //   orientation: {
+    //     heading: 0,
+    //     // 视角
+    //     pitch: -0.5686521559334161,
+    //     roll: 0.0,
+    //   }
+    // });
+    viewer.dataSources.add(
+      (Cesium.GeoJsonDataSource.load("/china.json", {
+        stroke: Cesium.Color.BLUE,
+        fill: Cesium.Color.fromAlpha(Cesium.Color.RED, 0.2),
+        strokeWidth: 3,
+        markerSymbol: "?",
+      }))
+    );
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(116.637, 39.966, 100000),
       oridntation: {
@@ -82,7 +98,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="cesiumContainer"/>
+      <div id="cesiumContainer" />
     );
   }
 }

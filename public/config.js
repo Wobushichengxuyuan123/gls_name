@@ -20,22 +20,6 @@ window.DISPATCHWSS = (window.parent._vue_config && window.parent._vue_config.DIS
 window.authentication = true;// 机器人重要操作是否鉴权
 window.SECURITY_PD = '04b315b25009b71843d5fd5bdee4ed10d2c1a17a185bf6c89798b41dd90526e573134fb66c3c802fe7ffa2dda8291bb4c32eaac633ad919c9c5c0b7b090d469b48'; // 安全密钥
 
-// 西安
-// window.LOGINPATH = "http://192.168.1.4";//登录服务页面
-// window.VideoUrl = "192.168.1.4:8888";  // 视频流地址
-// window.SYSTEM_WEBSOCKET = 'ws://192.168.1.4:8189';//websocket(发版)用于alert弹窗用
-// window.PATROL_CARD_TYPE_CODE = 'S3110'; // 基础服务巡查卡类型code
-// window.PATROL = ['油位表', '温度表', '旋钮开关', '压板开关', '电压表', '电流表', '压力表', '指示灯']; // 智能巡检渲染的点位设备类型
-// window.INSPECTION = ['门禁'];// 在线巡查渲染的点位设备类型
-// window.REBOT_SOCKET = 'ws://192.168.1.5:8206';
-
-// 西安公网
-// window.LOGINPATH = "https://8.142.19.151:6002";//登录服务页面
-// window.VideoUrl = "8.142.19.151:6010";  // 视频流地址
-// window.SYSTEM_WEBSOCKET = 'ws://8.142.19.151:6020';//websocket(发版)用于alert弹窗用
-// window.PATROL_CARD_TYPE_CODE = 'S3110'; // 基础服务巡查卡类型code 
-// window.PATROL = ['油位表', '温度表', '旋钮开关', '压板开关', '电压表', '电流表', '压力表', '指示灯']; // 智能巡检渲染的点位设备类型
-// window.INSPECTION = ['门禁'];// 在线巡查渲染的点位设备类型
 
 // 本地测试
 window.LOGINPATH = "http://192.168.1.52:8099";//登录服务页面(本地)

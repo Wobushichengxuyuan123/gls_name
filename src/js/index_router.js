@@ -40,7 +40,9 @@ class IndexRouter extends React.Component {
 					{/* 控制菜单显示 */}
 					<div className={openFlag ? 'closeBtn' : 'openBtn'} onClick={() => { this.setState({ openFlag: !openFlag }) }}><Icon type={openFlag ? 'left' : 'right'} /></div>
 					<Content className={openFlag ? 'left' : 'right'} style={{ padding: 0, margin: 0, minHeight: 280, }}>
-						<App />
+						<App>
+							
+						</App>
 					</Content>
 
 				</Layout>

@@ -6,7 +6,6 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 import "cesium/widgets.css";
 import '../css/index.css'
 
-// import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ConfigProvider locale={zhCN}>
